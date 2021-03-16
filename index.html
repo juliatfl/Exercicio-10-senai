@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input {
+        display: block;
+    }
+
+    h1 {
+        font-size: 16px;
+        margin-bottom: 0px;
+        margin-bottom: 6px;
+    }
+
+    span {
+        font-size: 13px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: darkblue;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    body {
+        width: 40%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .questao {
+        background-color: #e0f7faa1;
+        padding: 1px 0px 10px 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+
+    }
+    .questao:hover {
+        background-color: #e0f7fa;
+    }
+    input[type=button]{
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <div id="corpo">
+        <div class="questao">
+            <h1>Questã 01:<span>Calcular a média ponderada de 3 notas
+                    <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1006"
+                        target="_blank">detalhar</a></span></h1>
+            <p id="demo1">Resultado: A média das 3 notas foi xx.</p>
+            <label for="">Nota 01:</label>
+            <input type="text" id="a">
+            <label for="">Nota 02:</label>
+            <input type="text" id="b">
+            <label for="">Nota 03:</label>
+            <input type="text" id="c">
+            <input type="button" value="Calcular" onclick="media()">
+        </div>
+        <div class="questao">
+            <h1>Questão 02:<span> Senha Fixa <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1114"
+                        target="_blank">detalhar</a></span></h1>
+            <p id="demo2">Resultado: xxxxx</p>
+            <label for="">Digite a senha:</label>
+            <input type="password" id="senha1">
+            <input type="button" value="Calcular" onclick="senhacorreta()">
+        </div>
+        <div class="questao">
+            <h1>Questã 03:<span> Intervalo [0,25], [25,50], [50,75], [75,100] <a
+                        href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1037"
+                        target="_blank">detalhar</a></span></h1>
+            <p id="demo3">Resultado: O valor digita esta no intervalo [xx,xx].</p>
+            <label for="">Valor:</label>
+            <input type="text" id="numero">
+            <input type="button" value="Calcular" onclick="intervalo()">
+        </div>
+        <div class="questao">
+            <h1>Questã 04:<span> Aumento de Salário <a
+                        href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1048"
+                        target="_blank">detalhar</a></span></h1>
+            <p id="demo4">Resultado: Novo salario: xx.xx, Ganho: xx.xx, Percentual: xx%</p>
+            <label for="">Salário atual:</label>
+            <input type="text" id="salarioantigo">
+            <input type="button" value="Calcular" onclick="reajuste()">
+        </div>
+        <div class="questao">
+            <h1>Questã 05:<span> Imposto de Renda <a
+                        href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1051"
+                        target="_blank">detalhar</a></span></h1>
+            <p id="demo5">Resultado:Imposto xxxxx</p>
+            <label for="">Renda:</label>
+            <input type="text" id="renda">
+            <input type="button" value="Calcular" onclick="impostoderenda()">
+        </div>
+    </div>
+</body>
+<script>
+function media(){
+var a = (Number(document.getElementById("a").value) *2);
+var b = (Number(document.getElementById("b").value) *3);
+var c = (Number(document.getElementById("c").value) *5);
+var resultado = a * b * c;
+var resultadofinal = resultado/10;
+document.getElementById("demo1").innerHTML = "Resultado: A média das 3 notas foi " + resultadofinal.toFixed(1);
+
+}
+
+function senhacorreta(){
+
+var senha = Number(document.getElementById("senha1").value);
+if (senha == 2002) {
+document.getElementById("demo2").innerHTML = "Resultado: Senha Correta";
+}
+else{
+document.getElementById("demo2").innerHTML = "Resultado: Senha Inválida";
+
+}
+
+}
+function intervalo(){
+
+var numero = Number(document.getElementById("numero").value);
+if (numero >= 0 && numero <=25 ) {
+document.getElementById("demo3").innerHTML = "Resultado: O valor digita esta no intervalo [0,25]";     
+}
+
+else if (numero> 25 && numero <=50){
+document.getElementById("demo3").innerHTML = "Resultado: O valor digita esta no intervalo [25,50]";     
+}
+else if (numero> 50 && numero <=75){
+document.getElementById("demo3").innerHTML = "Resultado: O valor digita esta no intervalo [50,75]";     
+}
+else if (numero> 75 && numero <=100){
+document.getElementById("demo3").innerHTML = "Resultado: O valor digita esta no intervalo [75,100]";     
+}
+}
+function reajuste(){
+var salarioantigo = Number(document.getElementById("salarioantigo").value);
+if (salarioantigo >= 0 && salarioantigo <= 400.00) {
+salarioatual = salarioantigo * 1.15;
+ganho = salarioatual - salarioantigo;
+document.getElementById("demo4").innerHTML = "Resultado: Novo salario: " + salarioatual + " Ganho: " + ganho + " Percentual: 15%";
+
+}
+if (salarioantigo >= 400.01 && salarioantigo <= 800.00) {
+salarioatual = salarioantigo * 1.12;
+ganho = salarioatual - salarioantigo;
+document.getElementById("demo4").innerHTML = "Resultado: Novo salario: " + salarioatual + " Ganho: " + ganho + " Percentual: 12%";
+}
+if (salarioantigo >= 800.01 && salarioantigo <= 1200.00) {
+salarioatual = salarioantigo * 1.10;
+ganho = salarioatual - salarioantigo;
+document.getElementById("demo4").innerHTML = "Resultado: Novo salario: " + salarioatual + " Ganho: " + ganho + " Percentual: 10%";
+}
+if (salarioantigo >= 1200.01 && salarioantigo <= 2000.00) {
+salarioatual = salarioantigo * 1.07;
+ganho = salarioatual - salarioantigo;
+document.getElementById("demo4").innerHTML = "Resultado: Novo salario: " + salarioatual + " Ganho: " + ganho + " Percentual: 7%";
+}
+if (salarioantigo >= 2000.00) {
+salarioatual = salarioantigo * 1.04;
+ganho = salarioatual - salarioantigo;
+document.getElementById("demo4").innerHTML = "Resultado: Novo salario: " + salarioatual + " Ganho: " + ganho + " Percentual: 4%";
+}
+
+}
+function impostoderenda(){
+var renda = Number(document.getElementById("renda").value);
+var imposto = 0
+if (renda > 0 && renda <= 2000){
+document.getElementById("demo5").innerHTML = "Resultado:Imposto Isento";
+ }
+
+else if (renda > 2000.01 && renda <= 3000) {
+imposto = (renda - 2000) * (8/100);
+document.getElementById("demo5").innerHTML = "Resultado:Imposto R$" + imposto;
+ }
+
+else if (renda > 3000.01 && renda <= 4500) {
+imposto = (1000) * (8/100);
+imposto2 = (renda - 3000) * (18/100);
+resultado = imposto + imposto2;
+document.getElementById("demo5").innerHTML = "Resultado:Imposto R$" + resultado;
+ }
+else if (renda > 4500) {
+imposto = (1000) * (8/100);    
+imposto2 = (renda - 3000) * (18/100);
+imposto3 = (renda - 4500) * (28/100);
+resultado = imposto + imposto2 + imposto3;
+document.getElementById("demo5").innerHTML = "Resultado:Imposto R$" + resultado;
+ }
+}
+</script>
+</html>
